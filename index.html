@@ -11,6 +11,8 @@
   <script src="modal.min.js"></script>
   
   <style>
+    
+    /* General */
 
     *, *:before, *:after {
       -webkit-box-sizing: border-box;
@@ -28,12 +30,67 @@
     h1 {
       font-size: 2.5em;
     }
+
     h2 {
       font-size: 1.5em;
     }
+
     p {
       margin: 1em 0;
     }
+
+    a {
+      text-decoration: none;
+      font-weight: bold;
+      color: #4183c4;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+
+    code {
+      font-size: 0.8em;
+      padding: 0 0.4em;
+      border-radius: 0.2em;
+      border: 1px solid rgba(0,0,0,0.2);
+      background-color: rgba(0,0,0,0.1);
+    }
+
+    button {
+      margin: 0;
+      width: 20em;
+      color: #444;
+      border: none;
+      cursor: pointer;
+      padding: 1em 2em;
+      font-weight: bold;
+      border-radius: 0.25em;
+      background-color: #ccc;
+      box-shadow: 0 0.1em 0.25em rgba(0,0,0,0.2);
+
+      -webkit-transition: background-color 200ms, color 200ms;
+      -moz-transition: background-color 200ms, color 200ms;
+      -o-transition: background-color 200ms, color 200ms;
+      transition: background-color 200ms, color 200ms;
+    }
+    button:hover,
+    button:focus {
+      color: #333;
+      outline: none;
+      background-color: #bbb;
+    }
+    button:active {
+      color: #222;
+      background-color: #aaa;
+      box-shadow: 0 0.1em 0.25em rgba(0,0,0,0.2) inset;
+
+      -webkit-transition: none;
+      -moz-transition: none;
+      -o-transition: none;
+      transition: none;
+    }
+
+    /* Modals */
 
     .modal-wrapper {
       top: 0;
@@ -43,6 +100,10 @@
       opacity: 0;
       position: fixed;
       background-color: rgba(0,0,0,0.6);
+
+      -webkit-transition: opacity 200ms;
+      -moz-transition: opacity 200ms;
+      -o-transitoin: opacity 200ms;
       transition: opacity 200ms;
     }
 
@@ -57,13 +118,28 @@
       border-radius: 0.25em;
       background-color: #fff;
       box-shadow: 0 0 1em rgba(0,0,0,0.4);
+
       -webkit-transform: translate(-50%, -50%);
+      -moz-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+      -o-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
+
+      -webkit-transition: opacity 500ms, top 250ms;
+      -moz-transition: opacity 500ms, top 250ms;
+      -o-transition: opacity 500ms, top 250ms;
       transition: opacity 500ms, top 250ms;
     }
+
+    /* Custom Modals */
 
     .modal-customizable .modal-body {
       color: #fff;
       background-color: #222;
+    }
+    .modal-customizable code {
+      border: 1px solid rgba(255,255,255,0.2);
+      background-color: rgba(255,255,255,0.1);
     }
     .modal-customizable header,
     .modal-scrollable header {
@@ -77,6 +153,26 @@
       text-align: center;
     }
 
+    .modal-scrollable {
+      overflow: auto;
+    }
+    .modal-scrollable .modal-body {
+      position: static;
+      margin: 3em auto;
+      text-align: left;
+
+      -webkit-transform: none;
+      -moz-transform: none;
+      -ms-transform: none;
+      -o-transform: none;
+      transform: none;
+    }
+
+    #modal-callback-button {
+      margin-top: 1.5em;
+    }
+
+     /* Exit Button on Custom Modals */ 
     .exit-modal {
       top: 0.5em;
       right: 0.5em;
@@ -93,28 +189,32 @@
       height: 0.25em;
       position: absolute;
       background-color: #888;
+
+      -webkit-transition: background-color 200ms;
+      -moz-transition: background-color 200ms;
+      -o-transition: background-color 200ms;
       transition: background-color 200ms;
     }
     .exit-modal:before {
       -webkit-transform: translate(-50%, -50%) rotate(45deg);
+      -moz-transform: translate(-50%, -50%) rotate(45deg);
+      -ms-transform: translate(-50%, -50%) rotate(45deg);
+      -o-transform: translate(-50%, -50%) rotate(45deg);
+      transform: translate(-50%, -50%) rotate(45deg);
     }
     .exit-modal:after {
       -webkit-transform: translate(-50%, -50%) rotate(-45deg);
+      -moz-transform: translate(-50%, -50%) rotate(-45deg);
+      -ms-transform: translate(-50%, -50%) rotate(-45deg);
+      -o-transform: translate(-50%, -50%) rotate(-45deg);
+      transform: translate(-50%, -50%) rotate(-45deg);
     }
     .exit-modal:hover:before,
     .exit-modal:hover:after {
       background-color: #c33;
     }
 
-    .modal-scrollable {
-      overflow: auto;
-    }
-    .modal-scrollable .modal-body {
-      position: static;
-      margin: 3em auto;
-      text-align: left;
-      -webkit-transform: none;
-    }
+    /* Demo Buttons */
 
     .modal-buttons {
       text-align: center;
@@ -136,36 +236,6 @@
       display: inline-block;
     }
 
-    #modal-callback-button {
-      margin-top: 1.5em;
-    }
-
-    button {
-      margin: 0;
-      width: 20em;
-      color: #444;
-      border: none;
-      cursor: pointer;
-      padding: 1em 2em;
-      font-weight: bold;
-      border-radius: 0.25em;
-      background-color: #ccc;
-      box-shadow: 0 0.1em 0.25em rgba(0,0,0,0.2);
-      transition: background-color 200ms, color 200ms;
-    }
-    button:hover,
-    button:focus {
-      color: #333;
-      outline: none;
-      background-color: #bbb;
-    }
-    button:active {
-      color: #222;
-      transition: none;
-      background-color: #aaa;
-      box-shadow: 0 0.1em 0.25em rgba(0,0,0,0.2) inset;
-    }
-
   </style>
 
 </head>
@@ -182,11 +252,13 @@
       <li><button id="button-modal-customizable" type="button">Customizing Modals</button></li>
       <li><button id="button-modal-scrollable" type="button">Long Modals</button></li>
     </ul>
+    <p><small><a href="https://www.github.com/wwilsman/Modal.js">Back to Github</a>.</small></p>
   </section>
 
   <script>
   $(function() {
 
+    // Set some default options for the modals
     Modal.defaultOpts({
       afterInsert: function() {
         $( this.el ).transition({ opacity: 1 }).children().transition({ opacity: 1, top: '50%' });
@@ -197,35 +269,33 @@
       }
     });
 
+    // Create the custom modals
     new Modal( 'custom', { innerTmpl: '<h2>Custom Modal</h2><p><%= content %></p>' });
 
     new Modal( 'with-callback', {
-      innerTmpl: '<p><%= content %></p><button id="modal-callback-button" type="button">Ok</button>',
+      innerTmpl: '<p><%= content %></p><button id="exit-modal-button" type="button">Ok</button>',
       afterInsert: function() {
         var modal = this;
-        $( '#modal-callback-button' ).one( 'click', function() { modal.dismiss(); });
+        $( '#exit-modal-button' ).one( 'click', function() { modal.dismiss(); });
         $( modal.el ).transition({ opacity: 1 }).children().transition({ opacity: 1, top: '50%' });
       }
     });
 
     new Modal( 'static', {
       innerTmpl: '<p>This modal isn\'t called with any dynamic content. This text is all defined within ' +
-      '<code>innerTmpl</code>. This could be useful for login or signup forms.'
+        '<code>innerTmpl</code>. This could be useful for login or signup forms.'
     });
 
     new Modal( 'customizable', { 
-      outerTmpl: '<section class="modal-wrapper modal-<%= name %>"><aside class="modal-body"> ' +
-        '<header><h2><%= name %></h2><span class="exit-modal"></span></header><%= inner %></aside></section>',
+      inherits: 'with-callback',
+      outerTmpl: '<section class="modal-wrapper modal-<%= name %>"><aside class="modal-body"><header><h2><%= name %>' +
+        '</h2><span id="exit-modal-button" class="exit-modal"></span></header><%= inner %></aside></section>',
       innerTmpl: '<%= content %>',
-      afterInsert: function() {
-        var modal = this;
-        $( '.exit-modal' ).one( 'click', function() { modal.dismiss(); });
-        $( modal.el ).transition({ opacity: 1 }).children().transition({ opacity: 1, top: '50%' });
-      }
     });
 
     new Modal( 'scrollable', { inherits: 'customizable' });
 
+    // Bind click events to the demo buttons
     $( '#button-modal-default' ).on( 'click', function() {
       Modal( 'This is the default modal.<br>Click outside of the modal, or press <code>esc</code>, to dismiss.' );
     });
@@ -235,8 +305,8 @@
     });
 
     $( '#button-modal-callback' ).on( 'click', function() {
-      Modal( 'with-callback', 'This modal has a callback that is fired after it has been created. In this custom callback, ' +
-        'an <code>onclick</code> event is binded to this button; clicking it will dismiss the modal.' );
+      Modal( 'with-callback', 'This modal has a callback that is fired after it has been created. In this custom ' +
+        'callback, a <code>click</code> event is binded to this button; clicking it will dismiss the modal.' );
     });
 
     $( '#button-modal-static' ).on( 'click', function() { Modal.show( 'static' ); });

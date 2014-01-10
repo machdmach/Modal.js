@@ -1,6 +1,6 @@
 # Modal.js
 
-Simple customizable modals.
+Simple customizable modals. Check out the [demos](http://wwilsman.github.io/Modal.js/) to see it in action.
 
 ## Setup
 
@@ -25,7 +25,7 @@ To use **Modal.js**, just include `<script src="modal.min.js"></script>` in your
       position: absolute;
       text-align: center;
       top: 50%;
-      -webkit-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
     }
 
 ## Calling a Modal
@@ -52,7 +52,7 @@ You can alternatively skip the first argument and pass a name through the option
       innerTmpl: '<p><%= content %></p>'
     });
 
-To call you're new modal, pass the name of a modal to the `Modal()` function as the first perameter.
+To call your new modal, pass the name of a modal to the `Modal()` function as the first perameter.
 
     Modal( 'custom', 'This is a custom modal.' );
 
@@ -66,11 +66,11 @@ To call you're new modal, pass the name of a modal to the `Modal()` function as 
 
 - **outerTmpl** *String* - The outer template of the modal. It's recommended that this option be common for most modals. Modal name and innerTmpl is passed as `<%= name %>` and `<%= inner %>` respectively. *(Uses John Resig's Javascript Templating)*
 
-- **afterInsert** *Function* - Called after the modal is inserted into the DOM. The current modal object is assigned to `this`. Within the scope of this function you have access to `this.el`, which is the entire modal element, and `this.dismiss()`, which will call the *beforeDestroy* method and remove the modal.
+- **afterInsert** *Function* - Called after the modal is inserted into the DOM. The current modal object is assigned to `this`. Within the scope of this function you have access to `this.el`, which is the entire modal element, and `this.dismiss()`, which will call the *beforeDestroy* function and remove the modal.
 
-- **beforeDestroy** *Function* - Called before the modal is destroyed. The current modal object is assigned to `this`. Within the scope of this function you have access to `this.el`, which is the entire modal element.
+- **beforeDestroy** *Function* - Called before the modal is destroyed. The current modal object is assigned to `this`. Within the scope of this function you have access to `this.el`, which is the entire modal element, and `this.destroy()`, which will remove the modal from the DOM.
 
-## Miscellaneous Methods
+## Static Methods
 
 ### Modal.show( name )
 
@@ -83,3 +83,27 @@ Sets the default modal to use when calling `Modal()` without explicitly declarin
 ### Modal.defaultOpts( options )
 
 Overrides the default options used to create the modals. If called before using the default modal, it will also use these options. *This method does not affect previously created modals.*
+
+## License
+
+The MIT License (MIT)
+
+Copyright (c) 2014 Wil Wilsman
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
